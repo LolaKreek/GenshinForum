@@ -44,6 +44,7 @@ const SignUp = () => {
   return (
     <SignUpSec>
       <SignUpContainer>
+        <h1>Hi</h1>
         <Form onSubmit={handleLogin}>
           <FormInput name='email' type='email' placeholder='Your Email' onChange={e => setEmail(e.target.value)}/>
           <FormInput name='password' type='password' placeholder='Your Password' onChange={e => setPassword(e.target.value)}/>
