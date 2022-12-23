@@ -33,7 +33,7 @@ function App() {
         <Route path="/news" exact  element={<RequireAuth> <News /> </RequireAuth>} ></Route>
         <Route path="/characters" exact  element={<RequireAuth> <Characters /> </RequireAuth>} ></Route>
         <Route path="/users" exact  element={<RequireAuth> <New inputs={userInputs}/> </RequireAuth>} ></Route>
-        <Route path="/" exact  element={<RequireAuth> <Home /> </RequireAuth>} ></Route>
+        
         
       </Routes>
       <Footer />
