@@ -2,22 +2,16 @@
 
 import React, { useContext, useRef, useState } from 'react';
 import firebase from 'firebase/compat/app';
-import 'firebase/compat/firestore'
-import 'firebase/compat/auth'
-import {
-  SignUpSec,
-  SignUpContainer,
-  Form, 
-  FormInput,
-  Valid
-} from './SignUp.elements'
-import { Button } from '../../globalStyles'
+import 'firebase/compat/firestore';
+import 'firebase/compat/auth';
+import { Button } from '../../globalStyles';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import {auth} from "../../firebase"
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from "../../context/AuthContext"
+import { AuthContext } from "../../context/AuthContext";
+import './../../styles/loginPage.css';
 
 
 const SignUp = () => {
@@ -42,19 +36,21 @@ const SignUp = () => {
       });
   }
   return (
-    <SignUpSec>
-      <SignUpContainer>
-        <h1>Hi</h1>
-        <Form onSubmit={handleLogin}>
-          <FormInput name='email' type='email' placeholder='Your Email' onChange={e => setEmail(e.target.value)}/>
-          <FormInput name='password' type='password' placeholder='Your Password' onChange={e => setPassword(e.target.value)}/>
-          <Button fontBig type='submit'>Login</Button>
-          {error && <Valid>Wrong email or password</Valid>}
-        </Form>
+    <div className='login__main-container'>
+      <h1 className='main-container__header'>Strona logowania się do systemu</h1>
+      <div className='main-container__form-box'>
+        <form className='form-box__form' onSubmit={handleLogin}>
+          <h2 className='form__main-header'>Welcome back!</h2>
+          <p className='form__second-header'>User login</p>
+          <input className='form__input' name='email' type='email' placeholder='Your Email' onChange={e => setEmail(e.target.value)}/>
+          <input className='form__input' name='password' type='password' placeholder='Your Password' onChange={e => setPassword(e.target.value)}/>
+          <button className='form__submit-input' type='submit'>Login</button>
+          {error && <p className='login__error-message'>Wrong email or password</p>}
+        </form>
         
-     </SignUpContainer>
+     </div>
      
-    </SignUpSec>
+    </div>
   )
 }
 
