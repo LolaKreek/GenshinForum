@@ -10,12 +10,12 @@ import { auth, db, storage } from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
-import { NewContainer, NewImage, NewSec,FormInput, Form } from "./New.elements";
+import { NewImage, FormInput } from "./User.elements";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-
 import { Button } from "../../globalStyles";
+import './../../styles/userPage.css';
 
-const New = ({ inputs}) => {
+const User = ({ inputs}) => {
   const [file, setFile] = useState("");
   const [data, setData] = useState({});
   const [per, setPerc] = useState(null);
@@ -88,54 +88,55 @@ const New = ({ inputs}) => {
   };
 
   return (
-    <NewSec>
-      <NewContainer>
-        <div className="bottom">
-          <div className="left">
-            <NewImage
-              src={
-                file
-                  ? URL.createObjectURL(file)
-                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-              }
-              alt=""
-            />
-          </div>
-          <div className="right">
-            <Form onSubmit={handleAdd}>
-              <div className="formInput">
-                <label htmlFor="file">
-                  Image: <DriveFolderUploadOutlinedIcon className="icon" />
-                </label>
-                <FormInput
-                  type="file"
-                  id="file"
-                  onChange={(e) => setFile(e.target.files[0])}
-                  style={{ display: "none" }}
+    <div className="user__main-container">
+      <h1 className="user__main-header">Dane użytkownika</h1>
+
+      <div className="user__flex-container">
+        <div className="user__main-image">
+          <NewImage
+            src={
+              file
+                ? URL.createObjectURL(file)
+                : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+            }
+            alt=""
+          />
+        </div>
+
+        <div className="main-container__content">
+          <form className="content__form" onSubmit={handleAdd}>
+            <div className="content__upload-image">
+              <label htmlFor="file">
+                <p className="upload-image__paragraph">Upload your photo </p>
+                <DriveFolderUploadOutlinedIcon className="upload-image__icon" />
+              </label>
+              <FormInput
+                type="file"
+                id="file"
+                onChange={(e) => setFile(e.target.files[0])}
+                style={{ display: "none" }}
+              />
+            </div>
+
+            <hr className="content__hr-line"/>
+
+            {inputs.map((input) => (
+              <div className="content__div-input" key={input.id}>
+                <label className="single-input__item-label">{input.label}</label>
+                <input className="single-input__item-input"
+                  id={input.id}
+                  type={input.type}
+                  placeholder={input.placeholder}
+                  onChange={handleInput}
                 />
               </div>
-
-              {inputs.map((input) => (
-                <div className="formInput" key={input.id}>
-                  
-                  <label>{input.label}</label>
-                  <FormInput
-                    id={input.id}
-                    type={input.type}
-                    placeholder={input.placeholder}
-                    onChange={handleInput}
-                  />
-                </div>
-              ))}
-              <Button disabled={per !== null && per < 100} type="submit">
-                Send
-              </Button>
-            </Form>
-          </div>
+            ))}
+            <Button className="content__submit-input" disabled={per !== null && per < 100} type="submit">Send</Button>
+          </form>
         </div>
-        </NewContainer>
-    </NewSec>
+      </div>
+    </div>
   );
 };
 
-export default New;
+export default User;

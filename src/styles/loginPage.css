@@ -32,8 +32,7 @@
     width: 350px;
     margin: 0 auto;
     background-color: rgb(241, 248, 254);
-    box-shadow: 5px 5px 5px rgb(52, 52, 146);
-    border-radius: 15px;
+    border-radius: 7px;
 }
 
 .form__input{
@@ -83,7 +82,7 @@
     transition: 0.5s;
     background-size: 200% auto;
     color: white;            
-    border-radius: 20px;
+    border-radius: 5px;
     border: none;
     font-size: 18px;
     display: block;

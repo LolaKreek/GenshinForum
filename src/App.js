@@ -8,7 +8,7 @@ import News from './pages/News/News';
 import Characters from './pages/Characters/Characters';
 import SignUp from './pages/SignUp/SignUp';
 import { AuthContext } from "./context/AuthContext"
-import New from './components/New/New';
+import User from './components/User/User';
 import {userInputs} from "./formSource"
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
         <Route path="/" exact  element={<RequireAuth> <Home /> </RequireAuth>} ></Route>
         <Route path="/news" exact  element={<RequireAuth> <News /> </RequireAuth>} ></Route>
         <Route path="/characters" exact  element={<RequireAuth> <Characters /> </RequireAuth>} ></Route>
-        <Route path="/users" exact  element={<RequireAuth> <New inputs={userInputs}/> </RequireAuth>} ></Route>
+        <Route path="/users" exact  element={<RequireAuth> <User inputs={userInputs}/> </RequireAuth>} ></Route>
         
         
       </Routes>
