@@ -12,6 +12,7 @@ import {auth} from "../../firebase"
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../context/AuthContext";
 import './../../styles/loginPage.css';
+import { Navbar } from '../../components';
 
 
 const SignUp = () => {
@@ -36,9 +37,13 @@ const SignUp = () => {
       });
   }
   return (
+    <>
+    <Navbar activePage='Sign' />
     <div className='login__main-container'>
       <h1 className='main-container__header'>Strona logowania się do systemu</h1>
+
       <div className='main-container__form-box'>
+
         <form className='form-box__form' onSubmit={handleLogin}>
           <h2 className='form__main-header'>Welcome back!</h2>
           <p className='form__second-header'>User login</p>
@@ -47,10 +52,9 @@ const SignUp = () => {
           <button className='form__submit-input' type='submit'>Login</button>
           {error && <p className='login__error-message'>Wrong email or password</p>}
         </form>
-        
      </div>
-     
     </div>
+    </>
   )
 }
 

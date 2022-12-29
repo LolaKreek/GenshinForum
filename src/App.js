@@ -25,16 +25,14 @@ function App() {
     
     <Router>
       <GlobalStyle></GlobalStyle>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/sign-up" exact  element={<SignUp />} ></Route>
         
-        <Route path="/" exact  element={<RequireAuth> <Home /> </RequireAuth>} ></Route>
-        <Route path="/news" exact  element={<RequireAuth> <News /> </RequireAuth>} ></Route>
-        <Route path="/characters" exact  element={<RequireAuth> <Characters /> </RequireAuth>} ></Route>
-        <Route path="/users" exact  element={<RequireAuth> <User inputs={userInputs}/> </RequireAuth>} ></Route>
-        
-        
+        <Route path="/" exact element={<RequireAuth> <Home /> </RequireAuth>} ></Route>
+        <Route path="/news" exact element={<RequireAuth> <News /> </RequireAuth>} ></Route>
+        <Route path="/characters" exact element={<RequireAuth> <Characters /> </RequireAuth>} ></Route>
+        <Route path="/users" exact element={<RequireAuth> <User inputs={userInputs}/> </RequireAuth>} ></Route>        
       </Routes>
       <Footer />
     </Router>

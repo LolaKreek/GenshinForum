@@ -1,5 +1,3 @@
-
-
 import { useEffect, useState } from "react";
 import {
   doc,
@@ -14,6 +12,7 @@ import { NewImage, FormInput } from "./User.elements";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { Button } from "../../globalStyles";
 import './../../styles/userPage.css';
+import {Navbar} from '../../components';
 
 const User = ({ inputs}) => {
   const [file, setFile] = useState("");
@@ -88,6 +87,8 @@ const User = ({ inputs}) => {
   };
 
   return (
+    <>
+    <Navbar activePage='User' />
     <div className="user__main-container">
       <h1 className="user__main-header">Dane użytkownika</h1>
 
@@ -136,6 +137,7 @@ const User = ({ inputs}) => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

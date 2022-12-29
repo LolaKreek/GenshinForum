@@ -1,12 +1,14 @@
-import React from 'react'
-import { InfoSection, Pricing } from '../../components'
-import { homeObjOne, homeObjTwo, homeObjThree, homeObjFour } from '../Data'
+import React from 'react';
+import { InfoSection, Pricing } from '../../components';
+import { homeObjOne, homeObjTwo, homeObjThree, homeObjFour } from '../Data';
+import {Navbar} from '../../components';
 
 const Characters = () => {
   return (
     <>
-        <Pricing />
-        <InfoSection {...homeObjFour}/>
+      <Navbar activePage='Characters' />
+      <Pricing />
+      <InfoSection {...homeObjFour}/>
     </>
   )
 }
