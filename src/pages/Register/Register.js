@@ -61,15 +61,24 @@ const Register = () => {
         alert("Account created successfully");
         navigate("/");
         } catch (err) {
-            console.log(err.message);
+            setIfLoader(false);
+
             if(err.message == "Firebase: Password should be at least 6 characters (auth/weak-password)."){
                 setError("Password should be at least 6 characters");
             }
             else if(err.message == "Firebase: Error (auth/email-already-in-use)."){
-                setError("This email is already in use, please use another one");
+            setError("This email is already in use, please use another one");
             }
             else if(err.message == "Firebase: Error (auth/network-request-failed)."){
-                setError("Lost database connection, please try reloading the page");
+            setError("Lost database connection, please try reloading the page");
+            }
+            else if(err.message == "Firebase: Error (auth/internal-error)."){
+            setError("Please fill in all the fields provided");
+            }
+            else if(err.message == "Firebase: Error (auth/user-not-found)."){
+            setError("User not found, please check the correctness of the entered data");
+            }else{
+            setError(err.message);
             }
         }
     }
@@ -77,7 +86,7 @@ const Register = () => {
     return(
         <>
             {ifLoader ? <Loader /> : ''}
-            <Navbar activePage='Sign' />
+            <Navbar activePage='Register' />
             <div className='register__main-container'>
                 <h1 className='main-container__header'>Registration page</h1>
 

@@ -4,6 +4,7 @@ import { homeObjOne, homeObjTwo, homeObjThree, homeObjFour } from '../Data';
 import {Navbar} from '../../components';
 
 const Home = () => {
+
   return (
     <>
       <Navbar activePage='Home' />

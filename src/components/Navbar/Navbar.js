@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {
     Nav, 
     NavbarContainer, 
@@ -15,12 +15,20 @@ import {FaTimes, FaBars} from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import { Button } from '../../globalStyles';
 import './../../styles/global.css';
+import { AuthContext } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import { signInWithEmailAndPassword } from "firebase/auth";
+import {auth} from "../../firebase";
 
 const Navbar = (props) => {
 
+    const {currentUser, dispatch} = useContext(AuthContext);
+    const navigate = useNavigate();
+
     const [click, setClick] = useState(false);
-    const handleClick = () => setClick(!click);
     const [button, setButton] = useState(true);
+
+    const handleClick = () => setClick(!click);
 
     const showButton = () => {
         if(window.innerWidth <= 960){
@@ -29,6 +37,17 @@ const Navbar = (props) => {
             setButton(true)
         }
     };
+
+    const Logout = () => {
+        auth.signOut().then(() => {
+            dispatch({type:"LOGOUT"});
+            alert("Signed out successfully");
+            navigate("/sign-up");
+        })
+        .catch((error) => {
+            console.log("error: ", error);
+        })
+    }
 
     useEffect(() => {
         showButton();
@@ -66,14 +85,21 @@ const Navbar = (props) => {
                         </NavItem>
 
                         <NavItemBtn>
-                            {button ? (
-                                <NavBtnLink to='/sign-up' className={props.activePage=='Sign' ? 'navbar-active' : ''}>
-                                    <Button primary>SIGN IN</Button>
+                            {currentUser ? (
+                                <NavBtnLink to='/' className={props.activePage=='Sign' ? 'navbar-active' : ''}>
+                                    <Button primary onClick={Logout}>LOGOUT</Button>
                                 </NavBtnLink>
                             ) : (
-                                <NavBtnLink to='/sign-up'>
-                                    <Button fontBig primary>SIGN UP</Button>
-                                </NavBtnLink>
+                                <>
+                                    <NavBtnLink to='/sign-up' className={props.activePage=='Sign' ? 'navbar-active' : ''}>
+                                        <Button primary>SIGN IN</Button>
+                                    </NavBtnLink>
+
+                                    {/* Доделать */}
+                                    <NavBtnLink to='/register' className={props.activePage=='Register' ? 'navbar-active' : ''}>
+                                        <Button primary>REGISTER</Button>
+                                    </NavBtnLink>
+                                </>
                             )}
                         </NavItemBtn>
                     </NavMenu>

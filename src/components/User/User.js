@@ -59,8 +59,6 @@ const User = ({ inputs}) => {
     file && uploadFile();
   }, [file]);
 
-  console.log(data);
-
   const handleInput = (e) => {
     const id = e.target.id;
     const value = e.target.value;
