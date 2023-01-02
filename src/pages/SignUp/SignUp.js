@@ -70,8 +70,8 @@ const SignUp = () => {
           <form className='form-box__form' onSubmit={handleLogin}>
             <h2 className='form__main-header'>Welcome back!</h2>
             <p className='form__second-header'>User login</p>
-            <input className='form__input' name='email' type='email' placeholder='Your Email' onChange={e => setEmail(e.target.value)}/>
-            <input className='form__input' name='password' type='password' placeholder='Your Password' onChange={e => setPassword(e.target.value)}/>
+            <input className='form__input' name='email' type='email' placeholder='Your Email *' onChange={e => setEmail(e.target.value)}/>
+            <input className='form__input' name='password' type='password' placeholder='Your Password *' onChange={e => setPassword(e.target.value)}/>
             <button className='form__submit-input' type='submit'>Login</button>
             {error && <p className='login__error-message'>{error}</p>}
             <a href='/register' className='login__register-link'>Register on our platform</a>

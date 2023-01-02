@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import {
   doc,
   serverTimestamp,
   setDoc,
+  getDoc
 } from "firebase/firestore";
+import { collection, query, where, getDocs } from "firebase/firestore";
 import { auth, db, storage } from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
@@ -13,14 +15,27 @@ import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUpload
 import { Button } from "../../globalStyles";
 import './../../styles/userPage.css';
 import {Footer, Navbar} from '../../components';
+import { AuthContext } from '../../context/AuthContext';
 
-const User = ({ inputs}) => {
+const User = () => {
+  const {currentUser, dispatch} = useContext(AuthContext);
   const [file, setFile] = useState("");
   const [data, setData] = useState({});
   const [per, setPerc] = useState(null);
-  const navigate = useNavigate()
+  const [personalData, setPersonalData] = useState({});
+  const navigate = useNavigate();
+
+  const getUser = async () => {
+    const q = query(collection(db, "users"), where("email", "==", currentUser.email));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      setPersonalData(doc.data());
+    });
+  }
 
   useEffect(() => {
+    getUser();
     const uploadFile = () => {
       const name = new Date().getTime() + file.name;
 
@@ -119,7 +134,45 @@ const User = ({ inputs}) => {
 
             <hr className="content__hr-line"/>
 
-            {inputs.map((input) => (
+            <div className="content__div-input">
+              <label className="single-input__item-label">User name</label>
+              <input className="single-input__item-input" type='text' placeholder={personalData.username} onChange={handleInput} />
+            </div>
+
+            <div className="content__div-input">
+              <label className="single-input__item-label">Name and surname</label>
+              <input className="single-input__item-input" type='text' placeholder={personalData.displayName} onChange={handleInput} />
+            </div>
+
+            <div className="content__div-input">
+              <label className="single-input__item-label">Phone number</label>
+              <input className="single-input__item-input" type='text' placeholder={personalData.phone} onChange={handleInput} />
+            </div>
+
+            <div className="content__div-input">
+              <label className="single-input__item-label">Address</label>
+              <input className="single-input__item-input" type='text' placeholder={personalData.address} onChange={handleInput} />
+            </div>
+
+            <div className="content__div-input">
+              <label className="single-input__item-label">Country</label>
+              <input className="single-input__item-input" type='text' placeholder={personalData.country} onChange={handleInput} />
+            </div>
+
+            <div className="content__div-input">
+              <label className="single-input__item-label disabled">Email *</label>
+              <input className="single-input__item-input disabled" disabled type='email' placeholder={personalData.email + " *"} onChange={handleInput} />
+            </div>
+            <div className="content__div-input">
+              <p className="single-input__disabled-message">* This field cannot be changed</p>
+            </div>
+
+            <div className="content__div-input">
+              <label className="single-input__item-label">Password</label>
+              <input className="single-input__item-input" type='password' placeholder={personalData.password} onChange={handleInput} />
+            </div>
+
+            {/* {inputs.map((input) => (
               <div className="content__div-input" key={input.id}>
                 <label className="single-input__item-label">{input.label}</label>
                 <input className="single-input__item-input"
@@ -129,7 +182,7 @@ const User = ({ inputs}) => {
                   onChange={handleInput}
                 />
               </div>
-            ))}
+            ))} */}
             <Button className="content__submit-input" disabled={per !== null && per < 100} type="submit">Send</Button>
           </form>
         </div>

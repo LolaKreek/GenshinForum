@@ -91,6 +91,13 @@
     color: rgb(103, 103, 103);
 }
 
+.single-input__disabled-message{
+    color: rgb(103, 103, 103);
+    font-size: small;
+    float: right;
+    margin-right: 15px;
+}
+
 .content__submit-input{
     margin-top: 30px;
 }

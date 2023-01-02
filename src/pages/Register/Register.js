@@ -95,14 +95,14 @@ const Register = () => {
                         <h2 className='form__main-header'>Welcome to our system!</h2>
                         <p className='form__second-header'>User register</p>
 
-                        <input className='form__input' name='username' type='text' placeholder='Your username' onChange={e => setUsername(e.target.value)}/>
-                        <input className='form__input' name='name' type='text' placeholder='Your name and surname' onChange={e => setDisplayName(e.target.value)}/>
-                        <input className='form__input' name='phone' type='text' placeholder='Your phone number' onChange={e => setPhone(e.target.value)}/>
-                        <input className='form__input' name='address' type='text' placeholder='Your address' onChange={e => setAddress(e.target.value)}/>
-                        <input className='form__input' name='country' type='text' placeholder='Your country' onChange={e => setCountry(e.target.value)}/>
-                        <input className='form__input' name='email' type='email' placeholder='Your email' onChange={e => setEmail(e.target.value)}/>
-                        <input className='form__input' name='password' type='password' placeholder='Your password' onChange={e => setPassword(e.target.value)}/>
-                        <input className='form__input' name='password2' type='password' placeholder='Repeat your password' onChange={e => setPassword2(e.target.value)}/>
+                        <input className='form__input' name='username' type='text' placeholder='Your username *' onChange={e => setUsername(e.target.value)}/>
+                        <input className='form__input' name='name' type='text' placeholder='Your name and surname *' onChange={e => setDisplayName(e.target.value)}/>
+                        <input className='form__input' name='phone' type='text' placeholder='Your phone number *' onChange={e => setPhone(e.target.value)}/>
+                        <input className='form__input' name='address' type='text' placeholder='Your address *' onChange={e => setAddress(e.target.value)}/>
+                        <input className='form__input' name='country' type='text' placeholder='Your country *' onChange={e => setCountry(e.target.value)}/>
+                        <input className='form__input' name='email' type='email' placeholder='Your email *' onChange={e => setEmail(e.target.value)}/>
+                        <input className='form__input' name='password' type='password' placeholder='Your password *' onChange={e => setPassword(e.target.value)}/>
+                        <input className='form__input' name='password2' type='password' placeholder='Repeat your password *' onChange={e => setPassword2(e.target.value)}/>
 
                         <button className='form__submit-input' type='submit'>Register</button>
                         {error && <p className='register__error-message'>{error}</p>}

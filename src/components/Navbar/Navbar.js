@@ -41,7 +41,7 @@ const Navbar = (props) => {
     const Logout = () => {
         auth.signOut().then(() => {
             dispatch({type:"LOGOUT"});
-            alert("Signed out successfully");
+            alert('Signed out successfully');
             navigate("/sign-up");
         })
         .catch((error) => {
