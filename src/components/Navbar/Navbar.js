@@ -83,25 +83,28 @@ const Navbar = (props) => {
                         <NavItem>
                             <NavLink to='/users' className={props.activePage=='User' ? 'navbar-active' : ''}>User</NavLink>
                         </NavItem>
-
-                        <NavItemBtn>
-                            {currentUser ? (
+                        
+                        {currentUser ? (
+                            <NavItemBtn>
                                 <NavBtnLink to='/' className={props.activePage=='Sign' ? 'navbar-active' : ''}>
                                     <Button primary onClick={Logout}>LOGOUT</Button>
                                 </NavBtnLink>
-                            ) : (
-                                <>
+                            </NavItemBtn>
+                        ) : (
+                            <>
+                                <NavItemBtn>
                                     <NavBtnLink to='/sign-up' className={props.activePage=='Sign' ? 'navbar-active' : ''}>
                                         <Button primary>SIGN IN</Button>
                                     </NavBtnLink>
+                                </NavItemBtn>
 
-                                    {/* Доделать */}
+                                <NavItemBtn>
                                     <NavBtnLink to='/register' className={props.activePage=='Register' ? 'navbar-active' : ''}>
                                         <Button primary>REGISTER</Button>
                                     </NavBtnLink>
-                                </>
-                            )}
-                        </NavItemBtn>
+                                </NavItemBtn>
+                            </>
+                        )}
                     </NavMenu>
                 </NavbarContainer>
             </Nav>
