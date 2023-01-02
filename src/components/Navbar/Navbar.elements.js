@@ -13,7 +13,7 @@ align-items: center;
 font-size: 1.2rem;
 position: sticky;
 top: 0;
-z-index: 999;
+z-index: 1;
 `
 
 export const NavbarContainer = styled(Container)`
@@ -75,6 +75,7 @@ text-align: center;
 export const NavItem = styled.li`
 height: 80px;
 border-bottom: 2px solid transparent;
+transition: .5s linear;
 
 &:hover{
     border-bottom: 2px solid #4b59f7;

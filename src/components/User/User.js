@@ -12,7 +12,7 @@ import { NewImage, FormInput } from "./User.elements";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { Button } from "../../globalStyles";
 import './../../styles/userPage.css';
-import {Navbar} from '../../components';
+import {Footer, Navbar} from '../../components';
 
 const User = ({ inputs}) => {
   const [file, setFile] = useState("");
@@ -137,6 +137,8 @@ const User = ({ inputs}) => {
         </div>
       </div>
     </div>
+
+    <Footer />
     </>
   );
 };

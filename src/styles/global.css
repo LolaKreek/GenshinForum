@@ -1,3 +1,12 @@
 .navbar-active{
+    transition: 1s linear;
     background-color: rgb(54, 54, 114);
+}
+
+.display-none{
+    display: none;
+}
+
+.position-relative{
+    position: relative;
 }

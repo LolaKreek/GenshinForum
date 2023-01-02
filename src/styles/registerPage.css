@@ -1,9 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&family=Manrope:wght@500&family=Playfair+Display:ital@1&display=swap');
-
-.login__main-container{
+.register__main-container{
     background-image: url('../images/login-background.jpg');
     background-color: #cccccc;
-    height: 700px;
+    height: 1000px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -35,6 +33,24 @@
     border-radius: 7px;
 }
 
+.form__main-header{
+    display: block;
+    text-align: center;
+    margin-top: 50px;
+    color: rgb(97, 101, 210);
+    font-weight: 900;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.form__second-header{
+    display: block;
+    text-align: center;
+    margin-bottom: 50px;
+    color: rgb(97, 101, 210);
+    font-weight: 900;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
 .form__input{
     padding: 10px 20px;
     border-radius: 2px;
@@ -53,24 +69,6 @@
 
 .form__input::placeholder{
     color: #b6b6b6;
-}
-
-.form__main-header{
-    display: block;
-    text-align: center;
-    margin-top: 50px;
-    color: rgb(97, 101, 210);
-    font-weight: 900;
-    font-family: 'Josefin Sans', sans-serif;
-}
-
-.form__second-header{
-    display: block;
-    text-align: center;
-    margin-bottom: 50px;
-    color: rgb(97, 101, 210);
-    font-weight: 900;
-    font-family: 'Josefin Sans', sans-serif;
 }
 
 .form__submit-input{
@@ -96,7 +94,7 @@
     text-decoration: none;
 }
 
-.login__error-message{
+.register__error-message{
     color: red;
     text-align: center;
     font-weight: 900;
@@ -105,7 +103,7 @@
     margin: -10px 0 20px 0;
 }
 
-.login__register-link{
+.register__register-link{
     text-decoration: none;
     color: rgb(97, 118, 215);
     font-weight: 900;

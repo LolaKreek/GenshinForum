@@ -1,5 +1,3 @@
-
-
 import React, { useContext, useRef, useState } from 'react';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
@@ -12,7 +10,7 @@ import {auth} from "../../firebase"
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../context/AuthContext";
 import './../../styles/loginPage.css';
-import { Navbar } from '../../components';
+import { Footer, Navbar } from '../../components';
 
 
 const SignUp = () => {
@@ -40,7 +38,7 @@ const SignUp = () => {
     <>
     <Navbar activePage='Sign' />
     <div className='login__main-container'>
-      <h1 className='main-container__header'>Strona logowania się do systemu</h1>
+      <h1 className='main-container__header'>Login page</h1>
 
       <div className='main-container__form-box'>
 
@@ -51,9 +49,12 @@ const SignUp = () => {
           <input className='form__input' name='password' type='password' placeholder='Your Password' onChange={e => setPassword(e.target.value)}/>
           <button className='form__submit-input' type='submit'>Login</button>
           {error && <p className='login__error-message'>Wrong email or password</p>}
+          <a href='/register' className='login__register-link'>Register on our platform</a>
         </form>
      </div>
     </div>
+
+    <Footer />
     </>
   )
 }
