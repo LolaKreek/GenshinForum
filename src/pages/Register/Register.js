@@ -53,6 +53,7 @@ const Register = () => {
                 password,
                 email,
                 timeStamp: serverTimestamp(),
+                uid: res.user.uid,
             });
         }else{
             setError("The two password fields must be the same");

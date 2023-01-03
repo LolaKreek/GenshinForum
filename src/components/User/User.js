@@ -8,6 +8,7 @@ import {
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { auth, db, storage } from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { getDatabase, set } from "firebase/database";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 import { NewImage, FormInput } from "./User.elements";
@@ -29,7 +30,6 @@ const User = () => {
     const q = query(collection(db, "users"), where("email", "==", currentUser.email));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
       setPersonalData(doc.data());
     });
   }
@@ -77,23 +77,56 @@ const User = () => {
   const handleInput = (e) => {
     const id = e.target.id;
     const value = e.target.value;
-
     setData({ ...data, [id]: value });
   };
 
+  // console.log("personalData: ", personalData);
+
   const handleAdd = async (e) => {
     e.preventDefault();
+
+    if(data){
+      if(data.address){
+        personalData.address = data.address;
+      }
+      else if(data.country){
+        personalData.country = data.country;
+      }
+      else if(data.displayName){
+        personalData.displayName = data.displayName;
+      }
+      else if(data.password){
+        personalData.password = data.password;
+      }
+      else if(data.phone){
+        personalData.phone = data.phone;
+      }
+      else if(data.username){
+        personalData.username = data.username;
+      }
+    }
+
     try {
-      const res = await createUserWithEmailAndPassword(
-        auth,
-        data.email,
-        data.password
-      );
-      await setDoc(doc(db, "users", res.user.uid), {
-        ...data,
-        timeStamp: serverTimestamp(),
+      // const res = await createUserWithEmailAndPassword(
+      //   auth,
+      //   data.email,
+      //   data.password
+      // );
+      await setDoc(doc(db, "users", personalData.uid), {
+        address: personalData.address,
+        country: personalData.country,
+        displayName: personalData.displayName,
+        email: personalData.email,
+        password: personalData.password,
+        phone: personalData.phone,
+        timestamp: personalData.timestamp,
+        username: personalData.username,
+        uid: personalData.uid,
+        // ...data,
+        // timeStamp: serverTimestamp(),
       });
-      navigate(-1)
+      alert("Data updated successfully");
+      // navigate(-1);
     } catch (err) {
       console.log(err);
     }
@@ -136,27 +169,27 @@ const User = () => {
 
             <div className="content__div-input">
               <label className="single-input__item-label">User name</label>
-              <input className="single-input__item-input" type='text' placeholder={personalData.username} onChange={handleInput} />
+              <input className="single-input__item-input" id="username" type='text' placeholder={personalData.username} onChange={handleInput} />
             </div>
 
             <div className="content__div-input">
               <label className="single-input__item-label">Name and surname</label>
-              <input className="single-input__item-input" type='text' placeholder={personalData.displayName} onChange={handleInput} />
+              <input className="single-input__item-input" id="displayName" type='text' placeholder={personalData.displayName} onChange={handleInput} />
             </div>
 
             <div className="content__div-input">
               <label className="single-input__item-label">Phone number</label>
-              <input className="single-input__item-input" type='text' placeholder={personalData.phone} onChange={handleInput} />
+              <input className="single-input__item-input" id="phone" type='text' placeholder={personalData.phone} onChange={handleInput} />
             </div>
 
             <div className="content__div-input">
               <label className="single-input__item-label">Address</label>
-              <input className="single-input__item-input" type='text' placeholder={personalData.address} onChange={handleInput} />
+              <input className="single-input__item-input" id="address" type='text' placeholder={personalData.address} onChange={handleInput} />
             </div>
 
             <div className="content__div-input">
               <label className="single-input__item-label">Country</label>
-              <input className="single-input__item-input" type='text' placeholder={personalData.country} onChange={handleInput} />
+              <input className="single-input__item-input" id="country" type='text' placeholder={personalData.country} onChange={handleInput} />
             </div>
 
             <div className="content__div-input">
@@ -169,20 +202,9 @@ const User = () => {
 
             <div className="content__div-input">
               <label className="single-input__item-label">Password</label>
-              <input className="single-input__item-input" type='password' placeholder={personalData.password} onChange={handleInput} />
+              <input className="single-input__item-input" id="password" type='password' placeholder={personalData.password} onChange={handleInput} />
             </div>
 
-            {/* {inputs.map((input) => (
-              <div className="content__div-input" key={input.id}>
-                <label className="single-input__item-label">{input.label}</label>
-                <input className="single-input__item-input"
-                  id={input.id}
-                  type={input.type}
-                  placeholder={input.placeholder}
-                  onChange={handleInput}
-                />
-              </div>
-            ))} */}
             <Button className="content__submit-input" disabled={per !== null && per < 100} type="submit">Send</Button>
           </form>
         </div>
