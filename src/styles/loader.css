@@ -36,3 +36,10 @@
     border-radius: 50%;
     animation: spinner 1.5s linear infinite;
 }
+
+@media screen and (min-width: 1700px) {
+  .loading-spinner{
+    margin-left: 46%;
+    margin-top: 20%;
+  }
+}
