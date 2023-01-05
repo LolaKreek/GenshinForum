@@ -102,6 +102,13 @@
     margin-top: 30px;
 }
 
+.main-image__border{
+    width: 250px;
+    height: 250px;
+    margin: 35%;
+    border-radius: 50%;
+}
+
 @media screen and (max-width: 820px) {
     .content__form{
         width: 80%;

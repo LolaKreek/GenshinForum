@@ -80,8 +80,6 @@ const User = () => {
     setData({ ...data, [id]: value });
   };
 
-  // console.log("personalData: ", personalData);
-
   const handleAdd = async (e) => {
     e.preventDefault();
 
@@ -107,11 +105,6 @@ const User = () => {
     }
 
     try {
-      // const res = await createUserWithEmailAndPassword(
-      //   auth,
-      //   data.email,
-      //   data.password
-      // );
       await setDoc(doc(db, "users", personalData.uid), {
         address: personalData.address,
         country: personalData.country,
@@ -122,11 +115,8 @@ const User = () => {
         timestamp: personalData.timestamp,
         username: personalData.username,
         uid: personalData.uid,
-        // ...data,
-        // timeStamp: serverTimestamp(),
       });
       alert("Data updated successfully");
-      // navigate(-1);
     } catch (err) {
       console.log(err);
     }
@@ -140,14 +130,16 @@ const User = () => {
 
       <div className="user__flex-container">
         <div className="user__main-image">
-          <NewImage
-            src={
-              file
-                ? URL.createObjectURL(file)
-                : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-            }
-            alt=""
-          />
+          <div className="main-image__border">
+            <NewImage
+              src={
+                file
+                  ? URL.createObjectURL(file)
+                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+              }
+              alt="Main user's image"
+            />
+          </div>
         </div>
 
         <div className="main-container__content">
