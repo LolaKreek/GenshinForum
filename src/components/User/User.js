@@ -17,29 +17,38 @@ import { Button } from "../../globalStyles";
 import './../../styles/userPage.css';
 import {Footer, Navbar} from '../../components';
 import { AuthContext } from '../../context/AuthContext';
+import Loader from "../Loader/Loader";
 
 const User = () => {
   const {currentUser, dispatch} = useContext(AuthContext);
   const [file, setFile] = useState("");
   const [data, setData] = useState({});
   const [per, setPerc] = useState(null);
+  const [imageLink, setImageLink] = useState("");
   const [personalData, setPersonalData] = useState({});
   const navigate = useNavigate();
+  const [ifLoader, setIfLoader] = useState(false);
+  const [ifLoadPage, setifLoadPage] = useState(false);
 
   const getUser = async () => {
+    window.scrollTo(0, 0);
+    setifLoadPage(true);
     const q = query(collection(db, "users"), where("email", "==", currentUser.email));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
       setPersonalData(doc.data());
+      setImageLink(doc.data().image);
     });
+    setifLoadPage(false);
   }
 
   useEffect(() => {
     getUser();
     const uploadFile = () => {
-      const name = new Date().getTime() + file.name;
+      window.scrollTo(0, 0);
+      setIfLoader(true);
 
-      console.log(name);
+      const name = new Date().getTime() + file.name;
       const storageRef = ref(storage, file.name);
       const uploadTask = uploadBytesResumable(storageRef, file);
 
@@ -48,24 +57,21 @@ const User = () => {
         (snapshot) => {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log("Upload is " + progress + "% done");
-          setPerc(progress);
-          switch (snapshot.state) {
-            case "paused":
-              console.log("Upload is paused");
-              break;
-            case "running":
-              console.log("Upload is running");
-              break;
-            default:
-              break;
-          }
+            setPerc(progress);
+
+            // getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            //   setImageLink(downloadURL);
+            //   setImageName(downloadURL);
+            //   setData((prev) => ({ ...prev, img: downloadURL }));
+            // });
         },
         (error) => {
           console.log(error);
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setImageLink(downloadURL);
+            setImageName(downloadURL);
             setData((prev) => ({ ...prev, img: downloadURL }));
           });
         }
@@ -80,6 +86,29 @@ const User = () => {
     setData({ ...data, [id]: value });
   };
 
+  const setImageName = async (imageName) => {
+    personalData.image = imageName;
+
+    try {
+      await setDoc(doc(db, "users", personalData.uid), {
+        address: personalData.address,
+        country: personalData.country,
+        displayName: personalData.displayName,
+        email: personalData.email,
+        image: personalData.image,
+        password: personalData.password,
+        phone: personalData.phone,
+        timestamp: personalData.timestamp,
+        username: personalData.username,
+        uid: personalData.uid,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+
+    setIfLoader(false);
+  }
+
   const handleAdd = async (e) => {
     e.preventDefault();
 
@@ -87,20 +116,23 @@ const User = () => {
       if(data.address){
         personalData.address = data.address;
       }
-      else if(data.country){
+      if(data.country){
         personalData.country = data.country;
       }
-      else if(data.displayName){
+      if(data.displayName){
         personalData.displayName = data.displayName;
       }
-      else if(data.password){
+      if(data.password){
         personalData.password = data.password;
       }
-      else if(data.phone){
+      if(data.phone){
         personalData.phone = data.phone;
       }
-      else if(data.username){
+      if(data.username){
         personalData.username = data.username;
+      }
+      if(data.img){
+        personalData.image = data.img;
       }
     }
 
@@ -110,6 +142,7 @@ const User = () => {
         country: personalData.country,
         displayName: personalData.displayName,
         email: personalData.email,
+        image: personalData.image,
         password: personalData.password,
         phone: personalData.phone,
         timestamp: personalData.timestamp,
@@ -124,6 +157,8 @@ const User = () => {
 
   return (
     <>
+    {ifLoader ? <Loader /> : ''}
+    {ifLoadPage ? <Loader /> : ''}
     <Navbar activePage='User' />
     <div className="user__main-container">
       <h1 className="user__main-header">Dane użytkownika</h1>
@@ -133,8 +168,8 @@ const User = () => {
           <div className="main-image__border">
             <NewImage
               src={
-                file
-                  ? URL.createObjectURL(file)
+                imageLink
+                  ? imageLink
                   : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
               }
               alt="Main user's image"
