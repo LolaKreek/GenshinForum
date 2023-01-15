@@ -79,7 +79,7 @@ function Footer() {
             <SocialIcon />
             Genshin Impact
           </SocialLogo>
-          <WebsiteRights>Volha Zinkevich © 2022</WebsiteRights>
+          <WebsiteRights>Volha Zinkevich & Lalita Klimchuk © 2023</WebsiteRights>
           <SocialIcons>
             <SocialIconLink href='/' target='_blank' aria-label='Facebook'>
               <FaFacebook />
