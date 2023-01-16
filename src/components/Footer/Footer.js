@@ -27,6 +27,7 @@ import {
   SocialIcons,
   SocialIconLink
 } from './Footer.elements';
+import "./../../styles/footer.css";
 
 function Footer() {
   return (
@@ -42,16 +43,16 @@ function Footer() {
         <FooterLinksWrapper>
           <FooterLinkItems>
             <FooterLinkTitle>About Us</FooterLinkTitle>
-            <FooterLink to='/'>How it works</FooterLink>
-            <FooterLink to='/'>Testimonials</FooterLink>
-            <FooterLink to='/'>Careers</FooterLink>
-            <FooterLink to='/'>Investors</FooterLink>
-            <FooterLink to='/'>Terms of Service</FooterLink>
+            <a className='footer-link' href='https://genshin.hoyoverse.com/ru/character/inazuma?char=11'>How it works</a>
+            <a className='footer-link' href='https://www.pcgamer.com/genshin-impact-review/'>Testimonials</a>
+            <a className='footer-link' href='https://careers.mihoyo.com/#/'>Careers</a>
+            <a className='footer-link' href='https://www.crunchbase.com/organization/mihoyo'>Investors</a>
+            <a className='footer-link' href='https://genshinimpact-store.com/term-of-service/'>Terms of Service</a>
           </FooterLinkItems>
           <FooterLinkItems>
             <FooterLinkTitle>Contact Us</FooterLinkTitle>
-            <FooterLink to='/'>Contact</FooterLink>
-            <FooterLink to='/'>Support</FooterLink>
+            <a className='footer-link' href='https://www.hoyoverse.com/en-us/about-us?utm_source=genshin&utm_medium=footer'>Contact</a>
+            <a className='footer-link' href='https://gamingonphone.com/guides/how-to-contact-the-genshin-impact-customer-support-to-fix-an-issue/'>Support</a>
             <FooterLink to='/'>Destinations</FooterLink>
             <FooterLink to='/'>Sponsorships</FooterLink>
           </FooterLinkItems>
@@ -66,10 +67,10 @@ function Footer() {
           </FooterLinkItems>
           <FooterLinkItems>
             <FooterLinkTitle>Social Media</FooterLinkTitle>
-            <FooterLink to='/'>Instagram</FooterLink>
-            <FooterLink to='/'>Facebook</FooterLink>
-            <FooterLink to='/'>Youtube</FooterLink>
-            <FooterLink to='/'>Twitter</FooterLink>
+            <a className='footer-link' href='https://www.instagram.com/genshinimpact/'>Instagram</a>
+            <a className='footer-link' href='https://www.facebook.com/Genshinimpact/?brand_redir=2358272267741418'>Facebook</a>
+            <a className='footer-link' href='https://www.youtube.com/c/GenshinImpact'>Youtube</a>
+            <a className='footer-link' href='https://twitter.com/RUGenshinimpact'>Twitter</a>
           </FooterLinkItems>
         </FooterLinksWrapper>
       </FooterLinksContainer>
@@ -81,26 +82,24 @@ function Footer() {
           </SocialLogo>
           <WebsiteRights>Volha Zinkevich & Lalita Klimchuk © 2023</WebsiteRights>
           <SocialIcons>
-            <SocialIconLink href='/' target='_blank' aria-label='Facebook'>
+            <SocialIconLink href='https://www.facebook.com/Genshinimpact/?brand_redir=2358272267741418' target='_blank' aria-label='Facebook'>
               <FaFacebook />
             </SocialIconLink>
-            <SocialIconLink href='/' target='_blank' aria-label='Instagram'>
+            <SocialIconLink href='https://www.instagram.com/genshinimpact/' target='_blank' aria-label='Instagram'>
               <FaInstagram />
             </SocialIconLink>
             <SocialIconLink
-              href={
-                '//www.youtube.com/channel/UCsKsymTY_4BYR-wytLjex7A?view_as=subscriber'
-              }
+              href='https://www.youtube.com/c/GenshinImpact'
               rel='noopener noreferrer'
               target='_blank'
               aria-label='Youtube'
             >
               <FaYoutube />
             </SocialIconLink>
-            <SocialIconLink href='/' target='_blank' aria-label='Twitter'>
+            <SocialIconLink href='https://twitter.com/RUGenshinimpact' target='_blank' aria-label='Twitter'>
               <FaTwitter />
             </SocialIconLink>
-            <SocialIconLink href='/' target='_blank' aria-label='LinkedIn'>
+            <SocialIconLink href='https://www.hoyolab.com/home?utm_source=officialweb&utm_medium=game&utm_id=2' target='_blank' aria-label='LinkedIn'>
               <FaLinkedin />
             </SocialIconLink>
           </SocialIcons>
