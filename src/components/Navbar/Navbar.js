@@ -77,7 +77,7 @@ const Navbar = (props) => {
                         </NavItem>
 
                         <NavItem>
-                            <NavLink to='/characters' className={props.activePage=='Characters' ? 'navbar-active' : ''}>Characters</NavLink>
+                            <NavLink to='/characters' className={props.activePage=='Characters' ? 'navbar-active' : ''}>Regions</NavLink>
                         </NavItem>
 
                         <NavItem>

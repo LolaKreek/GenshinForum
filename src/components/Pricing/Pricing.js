@@ -2,6 +2,9 @@ import React from 'react';
 import { Button } from '../../globalStyles';
 import { IconContext } from 'react-icons/lib';
 import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom'
+
+
 
 import {
   PricingSection,
@@ -13,11 +16,23 @@ import {
   Mond,
   Liyue, 
   Inadzuma,
-  
 } from './Pricing.elements';
+
 
 function Pricing() {
 
+  const navigate = useNavigate();
+  const navigateToMond = () => {
+    navigate('/mond');
+  };
+
+  const navigateToLiyue = () => {
+    navigate('/liyue');
+  };
+
+  const navigateToInadzuma = () => {
+    navigate('/inazuma');
+  };
 
   return (
     <IconContext.Provider value={{ color: '#a9b3c1', size: 64 }}>
@@ -26,21 +41,24 @@ function Pricing() {
           <PricingHeading>Regions</PricingHeading>
 
           <PricingContainer>
-              
-                <Mond>
-                    <ButtonPlacement>
-                        <PricingCardPlan>Mondstadt</PricingCardPlan>
-                    </ButtonPlacement>
-                </Mond>
+               
+                <Mond onClick={navigateToMond}>
                 
-
-                <Liyue >
+                    <ButtonPlacement >
+                    
+                        <PricingCardPlan>Mondstadt</PricingCardPlan>
+                        
+                    </ButtonPlacement>
+                    
+                </Mond>
+              
+                <Liyue onClick={navigateToLiyue}>
                     <ButtonPlacement>
                         <PricingCardPlan>Liyue</PricingCardPlan>
                     </ButtonPlacement>
                 </Liyue>
 
-                <Inadzuma>
+                <Inadzuma onClick={navigateToInadzuma}>
                     <ButtonPlacement>
                         <PricingCardPlan>Inazuma</PricingCardPlan>
                     </ButtonPlacement>

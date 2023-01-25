@@ -9,7 +9,6 @@ const Characters = () => {
       <Navbar activePage='Characters' />
       <Pricing />
       <InfoSection {...homeObjFour}/>
-
       <Footer />
     </>
   )

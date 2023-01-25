@@ -9,6 +9,10 @@ import SignUp from './pages/SignUp/SignUp';
 import { AuthContext } from "./context/AuthContext";
 import User from './components/User/User';
 import Register from './pages/Register/Register';
+import Liyue from './components/Regions/Liyue';
+import Mond from './components/Regions/Mond';
+import Inazuma from './components/Regions/Inazuma';
+
 
 function App() {
 
@@ -30,9 +34,12 @@ function App() {
         <Route path="/news" exact element={<RequireAuth> <News /> </RequireAuth>} ></Route>
         <Route path="/characters" exact element={<RequireAuth> <Characters /> </RequireAuth>} ></Route>
         <Route path="/users" exact element={<RequireAuth> <User /> </RequireAuth>} ></Route>
+        <Route path="/mond" exact element={<RequireAuth> <Mond /> </RequireAuth>} ></Route>
+        <Route path="/liyue" exact element={<RequireAuth> <Liyue /> </RequireAuth>} ></Route>
+        <Route path="/inazuma" exact element={<RequireAuth> <Inazuma /> </RequireAuth>} ></Route>
+        
       </Routes>
     </Router>
-    
   );
 }
 

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+
 import styled from 'styled-components';
 import mond from '../../images/monst.jpg';
 import li from '../../images/www.png';
@@ -151,6 +151,5 @@ export const Inadzuma = styled.div`
 export const ButtonPlacement = styled.div`
   margin-top: 400px; 
   margin-left: 120px;
-  
 `;
 
