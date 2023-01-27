@@ -29,6 +29,7 @@ const User = () => {
   const navigate = useNavigate();
   const [ifLoader, setIfLoader] = useState(false);
   const [ifLoadPage, setifLoadPage] = useState(false);
+  
 
   const getUser = async () => {
     window.scrollTo(0, 0);

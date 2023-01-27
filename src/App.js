@@ -12,6 +12,7 @@ import Register from './pages/Register/Register';
 import Liyue from './components/Regions/Liyue';
 import Mond from './components/Regions/Mond';
 import Inazuma from './components/Regions/Inazuma';
+import Forum from './pages/Forum/Forum';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
         <Route path="/mond" exact element={<RequireAuth> <Mond /> </RequireAuth>} ></Route>
         <Route path="/liyue" exact element={<RequireAuth> <Liyue /> </RequireAuth>} ></Route>
         <Route path="/inazuma" exact element={<RequireAuth> <Inazuma /> </RequireAuth>} ></Route>
+        <Route path="/forum" exact element={<RequireAuth> <Forum /> </RequireAuth>} ></Route>
         
       </Routes>
     </Router>

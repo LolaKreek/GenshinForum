@@ -81,9 +81,14 @@ const Navbar = (props) => {
                         </NavItem>
 
                         <NavItem>
+                            <NavLink to='/forum' className={props.activePage=='Forum' ? 'navbar-active' : ''}>Forum</NavLink>
+                        </NavItem>
+
+                        <NavItem>
                             <NavLink to='/users' className={props.activePage=='User' ? 'navbar-active' : ''}>User</NavLink>
                         </NavItem>
-                        
+
+                      
                         {currentUser ? (
                             <NavItemBtn>
                                 <NavBtnLink to='/' className={props.activePage=='Sign' ? 'navbar-active' : ''}>
