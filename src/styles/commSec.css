@@ -1,1 +1,94 @@
-.link-muted { color: #aaa; } .link-muted:hover { color: #1266f1; }
+.link-muted { color: #aaa; } 
+
+.link-muted:hover { color: #1266f1; }
+
+.info-sec-header{
+    color: black;
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.comment__main-container{
+    border-radius: 15px;
+}
+
+.flex-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.main-image__main-container{
+    flex-basis: 15%;
+}
+
+.main-image__main-container img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.main-content-container{
+    flex-basis: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.container-headers{
+    flex-basis: 30%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.main-header{
+    flex-basis: 20%;
+}
+
+.second-header{
+    flex-basis: 20%;
+    text-align: right;
+    font-style: italic;
+    font-size: 13px;
+    color: gray;
+}
+
+.container-comment-content{
+    flex-basis: 70%;
+}
+
+.main-form-wrapper{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    border-radius: 15px;
+}
+
+.wrapper-header{
+    flex-basis: 10%;
+}
+
+.content__form{
+    flex-basis: 50%;
+}
+
+.header-h2{
+    text-align: center;
+}
+
+.input-wrapper{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    max-width: 80%;
+}
+
+.submit_btn_comm_sec{
+    max-width: 150px;
+}

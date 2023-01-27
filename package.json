@@ -11,6 +11,7 @@
     "@testing-library/react": "^13.0.1",
     "@testing-library/user-event": "^14.1.0",
     "firebase": "^9.6.10",
+    "mdb-react-ui-kit": "^5.1.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-firebase-hooks": "^5.0.3",
