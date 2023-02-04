@@ -3,6 +3,9 @@ import {MDBCard} from "mdb-react-ui-kit";
 import {CommentsWrapper} from '../CommentSection/CommentSection.elements'
 
 const NewComment = (props) => {
+
+    console.log("props: ", props);
+
     return(
         <CommentsWrapper className='comment__main-container'> 
         <section className="vh-100">
