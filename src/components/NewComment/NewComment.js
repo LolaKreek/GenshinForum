@@ -3,9 +3,6 @@ import {MDBCard} from "mdb-react-ui-kit";
 import {CommentsWrapper} from '../CommentSection/CommentSection.elements'
 
 const NewComment = (props) => {
-
-    console.log("props: ", props);
-
     return(
         <CommentsWrapper className='comment__main-container'> 
         <section className="vh-100">
@@ -13,7 +10,7 @@ const NewComment = (props) => {
                 <div className='main-image__main-container'>
                     <img
                         className="rounded-circle shadow-1-strong me-3"
-                        src="https://us.123rf.com/450wm/osherro/osherro2010/osherro201000011/osherro201000011.jpg?ver=6"
+                        src={props.image}
                         alt="avatar"
                         width="65"
                         height="65"
@@ -22,12 +19,16 @@ const NewComment = (props) => {
 
                 <MDBCard className="w-100 main-content-container">
                     <div className='container-headers'>
-                        <h1 className='main-header' >{props.nameComment}</h1>
-                        <p className="small second-header">Now</p>
+                    <h1 className='main-header' >{props.commentName}</h1>
+                       <p className="small second-header">{props.date}</p>
                     </div>
 
                     <div className='container-comment-content'>
-                        <p id="user_comment_content">{props.commentData}</p>
+                        <p id="user_comment_content">{props.comment}</p>
+                    </div>
+
+                    <div className='container-comment__user-data'>
+                        <p className='user__personal-name'>{props.name}</p>
                     </div>
                 </MDBCard>
             </div>

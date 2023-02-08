@@ -46,7 +46,7 @@
 }
 
 .main-header{
-    flex-basis: 20%;
+    flex-basis: 95%;
 }
 
 .second-header{
@@ -91,4 +91,16 @@
 
 .submit_btn_comm_sec{
     max-width: 150px;
+}
+
+.container-comment__user-data{
+    text-align: end;
+    color: gray;
+    font-style: italic;
+    font-size: 14px;
+}
+
+.rounded-circle{
+    object-fit: cover;
+    object-position: 30 0;
 }

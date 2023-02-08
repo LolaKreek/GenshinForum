@@ -118,6 +118,17 @@ export const FormInput = styled.input`
     border: 1px solid rgb(215, 212, 212);
 `;
 
+export const ForumInputArea = styled.textarea`
+    padding: 10px 20px;
+    border-radius: 2px;
+    margin: 10px;
+    font-size: 16px;
+    width: 100%;
+    height: 100px;
+    color: rgb(103, 103, 103);
+    border: 1px solid rgb(215, 212, 212);
+`;
+
 export const CommentsWrapper = styled.div`
   margin-top: 30px;
   padding: 30px;
