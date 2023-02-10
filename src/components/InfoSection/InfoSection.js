@@ -40,11 +40,11 @@ const InfoSection = ({
                     <TopLine lightTopLine={lightTopLine}>{topLine}</TopLine>
                     <Heading lightText={lightText}>{headline}</Heading>
                     <Subtitle lightTextDesc={lightTextDesc}>{description}</Subtitle>
-                    <Link to='/sign-up'>
+                    <a href='https://genshin.hoyoverse.com/ru/home'>
                       <Button big fontBig primary={primary}>
                         {buttonLabel}
                       </Button>
-                    </Link>
+                    </a>
                   </TextWrapper>
                 </InfoColumn>
                 <InfoColumn>
