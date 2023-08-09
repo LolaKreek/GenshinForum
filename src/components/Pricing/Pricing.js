@@ -1,10 +1,6 @@
 import React from 'react';
-import { Button } from '../../globalStyles';
 import { IconContext } from 'react-icons/lib';
 import { useNavigate } from "react-router-dom";
-import { Link } from 'react-router-dom'
-
-
 
 import {
   PricingSection,

@@ -17,7 +17,6 @@ import { Button } from '../../globalStyles';
 import './../../styles/global.css';
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { signInWithEmailAndPassword } from "firebase/auth";
 import {auth} from "../../firebase";
 
 const Navbar = (props) => {

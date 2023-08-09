@@ -1,14 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
 import {
   doc,
-  serverTimestamp,
-  setDoc,
-  getDoc
+  setDoc
 } from "firebase/firestore";
 import { collection, query, where, getDocs } from "firebase/firestore";
-import { auth, db, storage } from "../../firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { getDatabase, set } from "firebase/database";
+import { db, storage } from "../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 import { NewImage, FormInput } from "./User.elements";
@@ -20,7 +16,7 @@ import { AuthContext } from '../../context/AuthContext';
 import Loader from "../Loader/Loader";
 
 const User = () => {
-  const {currentUser, dispatch} = useContext(AuthContext);
+  const {currentUser} = useContext(AuthContext);
   const [file, setFile] = useState("");
   const [data, setData] = useState({});
   const [per, setPerc] = useState(null);

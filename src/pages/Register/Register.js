@@ -1,10 +1,10 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import {
     doc,
     serverTimestamp,
     setDoc,
   } from "firebase/firestore";
-import { auth, db, storage } from "../../firebase";
+import { auth, db } from "../../firebase";
 // import 'firebase/compat/firestore';
 // import 'firebase/compat/auth';
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -30,7 +30,6 @@ const Register = () => {
     const [ifLoader, setIfLoader] = useState(false);
 
     const navigate = useNavigate();
-    const {dispatch} = useContext(AuthContext);
 
     const handleRegister = async (e) => {
         window.scrollTo(0, 0);

@@ -1,4 +1,3 @@
-import {Navbar, Footer} from './components';
 import React, { useContext } from 'react';
 import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
 import GlobalStyle from './globalStyles';

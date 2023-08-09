@@ -1,24 +1,13 @@
-import React, { useContext, useRef, useEffect, useState } from 'react';
-import { auth, db, storage } from "../../firebase";
-import {  onAuthStateChanged } from "firebase/auth";
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { db } from "../../firebase";
 import { Button, Container } from '../../globalStyles';
 import { AuthContext } from '../../context/AuthContext';
 import Loader from "../Loader/Loader";
 import "../../styles/commSec.css";
 
-import {addDoc, doc, serverTimestamp, setDoc, Timestamp } from "firebase/firestore";
-import { collection, query, where, getDocs, getDoc } from "firebase/firestore";
+import {addDoc} from "firebase/firestore";
+import { collection, query, where, getDocs } from "firebase/firestore";
 
-import {
-    MDBCard,
-    MDBCardBody,
-    MDBCol,
-    MDBContainer,
-    MDBIcon,
-    MDBRow,
-    MDBTypography,
-  } from "mdb-react-ui-kit";
 
 import {
   InfoSec, 
@@ -27,19 +16,17 @@ import {
   FormInput,
   FormWrapper,
   FormLabel,
-  ForumInputArea,
-  CommentsWrapper
+  ForumInputArea
 } from './CommentSection.elements'
 import NewComment from '../NewComment/NewComment';
-import { async } from '@firebase/util';
 
 
 const CommentSection = () => {
 
-    const {currentUser, dispatch} = useContext(AuthContext);
+    const {currentUser} = useContext(AuthContext);
     const [ifLoadPage, setifLoadPage] = useState(false);
     const [commentData, setCommentData] = useState(Array);
-    const [personalData, setPersonalData] = useState('');
+    const [setPersonalData] = useState('');
 
     const handleAdd = async (e) => {
         setifLoadPage(true);

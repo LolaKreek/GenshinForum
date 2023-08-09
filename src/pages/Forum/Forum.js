@@ -1,6 +1,5 @@
 import React from 'react';
-import { Footer, InfoSection, Pricing, CommentSection } from '../../components';
-import { homeObjOne, homeObjTwo, homeObjThree, homeObjFour } from '../Data';
+import { Footer, CommentSection } from '../../components';
 import {Navbar} from '../../components';
 
 const Forum = () => {

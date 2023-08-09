@@ -1,7 +1,5 @@
 import React from 'react';
-import { Footer , Navbar} from '../../components';
 import { Container } from '../../globalStyles'
-
 
 import {
     InfoSec, 
