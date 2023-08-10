@@ -25,20 +25,29 @@ const User = () => {
   const [ifLoadPage, setifLoadPage] = useState(false);
   
 
-  const getUser = async () => {
+  // const getUser = async () => {
+  //   window.scrollTo(0, 0);
+  //   setifLoadPage(true);
+  //   const q = query(collection(db, "users"), where("email", "==", currentUser.email));
+  //   const querySnapshot = await getDocs(q);
+  //   querySnapshot.forEach((doc) => {
+  //     setPersonalData(doc.data());
+  //     setImageLink(doc.data().image);
+  //   });
+  //   setifLoadPage(false);
+  // }
+
+  useEffect(() => {
     window.scrollTo(0, 0);
     setifLoadPage(true);
     const q = query(collection(db, "users"), where("email", "==", currentUser.email));
-    const querySnapshot = await getDocs(q);
+    const querySnapshot = getDocs(q);
     querySnapshot.forEach((doc) => {
       setPersonalData(doc.data());
       setImageLink(doc.data().image);
     });
     setifLoadPage(false);
-  }
 
-  useEffect(() => {
-    getUser();
     const uploadFile = () => {
       window.scrollTo(0, 0);
       setIfLoader(true);
@@ -52,12 +61,6 @@ const User = () => {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             setPerc(progress);
-
-            // getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            //   setImageLink(downloadURL);
-            //   setImageName(downloadURL);
-            //   setData((prev) => ({ ...prev, img: downloadURL }));
-            // });
         },
         (error) => {
           console.log(error);
@@ -65,7 +68,25 @@ const User = () => {
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             setImageLink(downloadURL);
-            setImageName(downloadURL);
+            personalData.image = downloadURL;
+            try {
+              setDoc(doc(db, "users", personalData.uid), {
+                address: personalData.address,
+                country: personalData.country,
+                displayName: personalData.displayName,
+                email: personalData.email,
+                image: personalData.image,
+                password: personalData.password,
+                phone: personalData.phone,
+                timestamp: personalData.timestamp,
+                username: personalData.username,
+                uid: personalData.uid,
+              });
+            } catch (err) {
+              console.log(err);
+            }
+
+    setIfLoader(false);
             setData((prev) => ({ ...prev, img: downloadURL }));
           });
         }
@@ -80,28 +101,28 @@ const User = () => {
     setData({ ...data, [id]: value });
   };
 
-  const setImageName = async (imageName) => {
-    personalData.image = imageName;
+  // const setImageName = async (imageName) => {
+  //   personalData.image = imageName;
 
-    try {
-      await setDoc(doc(db, "users", personalData.uid), {
-        address: personalData.address,
-        country: personalData.country,
-        displayName: personalData.displayName,
-        email: personalData.email,
-        image: personalData.image,
-        password: personalData.password,
-        phone: personalData.phone,
-        timestamp: personalData.timestamp,
-        username: personalData.username,
-        uid: personalData.uid,
-      });
-    } catch (err) {
-      console.log(err);
-    }
+  //   try {
+  //     await setDoc(doc(db, "users", personalData.uid), {
+  //       address: personalData.address,
+  //       country: personalData.country,
+  //       displayName: personalData.displayName,
+  //       email: personalData.email,
+  //       image: personalData.image,
+  //       password: personalData.password,
+  //       phone: personalData.phone,
+  //       timestamp: personalData.timestamp,
+  //       username: personalData.username,
+  //       uid: personalData.uid,
+  //     });
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
 
-    setIfLoader(false);
-  }
+  //   setIfLoader(false);
+  // }
 
   const handleAdd = async (e) => {
     e.preventDefault();

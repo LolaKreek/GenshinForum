@@ -49,7 +49,11 @@ const Navbar = (props) => {
     }
 
     useEffect(() => {
-        showButton();
+        if(window.innerWidth <= 960){
+            setButton(false)
+        } else {
+            setButton(true)
+        }
     }, []);
 
     window.addEventListener('resize', showButton)
