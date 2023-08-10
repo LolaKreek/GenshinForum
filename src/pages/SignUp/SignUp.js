@@ -1,10 +1,6 @@
-import React, { useContext, useRef, useState } from 'react';
-import firebase from 'firebase/compat/app';
+import React, { useContext, useState } from 'react';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
-import { Button } from '../../globalStyles';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import {auth} from "../../firebase";
 import { useNavigate } from 'react-router-dom';
@@ -39,19 +35,19 @@ const SignUp = () => {
       .catch((error) => {
         setIfLoader(false);
         
-        if(error.message == "Firebase: Password should be at least 6 characters (auth/weak-password)."){
+        if(error.message === "Firebase: Password should be at least 6 characters (auth/weak-password)."){
           setError("Password should be at least 6 characters");
         }
-        else if(error.message == "Firebase: Error (auth/email-already-in-use)."){
+        else if(error.message === "Firebase: Error (auth/email-already-in-use)."){
           setError("This email is already in use, please use another one");
         }
-        else if(error.message == "Firebase: Error (auth/network-request-failed)."){
+        else if(error.message === "Firebase: Error (auth/network-request-failed)."){
           setError("Lost database connection, please try reloading the page");
         }
-        else if(error.message == "Firebase: Error (auth/internal-error)."){
+        else if(error.message === "Firebase: Error (auth/internal-error)."){
           setError("Please fill in all the fields provided");
         }
-        else if(error.message == "Firebase: Error (auth/user-not-found)."){
+        else if(error.message === "Firebase: Error (auth/user-not-found)."){
           setError("User not found, please check the correctness of the entered data");
         }else{
           setError(error.message);

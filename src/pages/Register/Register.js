@@ -5,15 +5,11 @@ import {
     setDoc,
   } from "firebase/firestore";
 import { auth, db } from "../../firebase";
-// import 'firebase/compat/firestore';
-// import 'firebase/compat/auth';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from "../../context/AuthContext";
 import './../../styles/registerPage.css';
 import { Footer, Navbar } from '../../components';
 import Loader from '../../components/Loader/Loader';
-
 
 const Register = () => {
 
@@ -42,7 +38,7 @@ const Register = () => {
             password
         );
 
-        if(password == password2){
+        if(password === password2){
             await setDoc(doc(db, "users", res.user.uid), {
                 username,
                 displayName,
@@ -63,19 +59,19 @@ const Register = () => {
         } catch (err) {
             setIfLoader(false);
 
-            if(err.message == "Firebase: Password should be at least 6 characters (auth/weak-password)."){
+            if(err.message === "Firebase: Password should be at least 6 characters (auth/weak-password)."){
                 setError("Password should be at least 6 characters");
             }
-            else if(err.message == "Firebase: Error (auth/email-already-in-use)."){
+            else if(err.message === "Firebase: Error (auth/email-already-in-use)."){
             setError("This email is already in use, please use another one");
             }
-            else if(err.message == "Firebase: Error (auth/network-request-failed)."){
+            else if(err.message === "Firebase: Error (auth/network-request-failed)."){
             setError("Lost database connection, please try reloading the page");
             }
-            else if(err.message == "Firebase: Error (auth/internal-error)."){
+            else if(err.message === "Firebase: Error (auth/internal-error)."){
             setError("Please fill in all the fields provided");
             }
-            else if(err.message == "Firebase: Error (auth/user-not-found)."){
+            else if(err.message === "Firebase: Error (auth/user-not-found)."){
             setError("User not found, please check the correctness of the entered data");
             }else{
             setError(err.message);

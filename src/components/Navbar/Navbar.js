@@ -25,7 +25,7 @@ const Navbar = (props) => {
     const navigate = useNavigate();
 
     const [click, setClick] = useState(false);
-    const [button, setButton] = useState(true);
+    const [setButton] = useState(true);
 
     const handleClick = () => setClick(!click);
 
@@ -68,42 +68,42 @@ const Navbar = (props) => {
                     </MobileIcon>
                     <NavMenu onClick={handleClick} click={click}>
                         <NavItem>
-                            <NavLink to='/' className={props.activePage=='Home' ? 'navbar-active' : ''}>Home</NavLink>
+                            <NavLink to='/' className={props.activePage === 'Home' ? 'navbar-active' : ''}>Home</NavLink>
                         </NavItem>
             
                         <NavItem>
-                            <NavLink to='/news' className={props.activePage=='News' ? 'navbar-active' : ''}>News</NavLink>
+                            <NavLink to='/news' className={props.activePage === 'News' ? 'navbar-active' : ''}>News</NavLink>
                         </NavItem>
 
                         <NavItem>
-                            <NavLink to='/characters' className={props.activePage=='Characters' ? 'navbar-active' : ''}>Regions</NavLink>
+                            <NavLink to='/characters' className={props.activePage === 'Characters' ? 'navbar-active' : ''}>Regions</NavLink>
                         </NavItem>
 
                         <NavItem>
-                            <NavLink to='/forum' className={props.activePage=='Forum' ? 'navbar-active' : ''}>Forum</NavLink>
+                            <NavLink to='/forum' className={props.activePage === 'Forum' ? 'navbar-active' : ''}>Forum</NavLink>
                         </NavItem>
 
                         <NavItem>
-                            <NavLink to='/users' className={props.activePage=='User' ? 'navbar-active' : ''}>User</NavLink>
+                            <NavLink to='/users' className={props.activePage === 'User' ? 'navbar-active' : ''}>User</NavLink>
                         </NavItem>
 
                       
                         {currentUser ? (
                             <NavItemBtn>
-                                <NavBtnLink to='/' className={props.activePage=='Sign' ? 'navbar-active' : ''}>
+                                <NavBtnLink to='/' className={props.activePage === 'Sign' ? 'navbar-active' : ''}>
                                     <Button primary onClick={Logout}>LOGOUT</Button>
                                 </NavBtnLink>
                             </NavItemBtn>
                         ) : (
                             <>
                                 <NavItemBtn>
-                                    <NavBtnLink to='/sign-up' className={props.activePage=='Sign' ? 'navbar-active' : ''}>
+                                    <NavBtnLink to='/sign-up' className={props.activePage === 'Sign' ? 'navbar-active' : ''}>
                                         <Button primary>SIGN IN</Button>
                                     </NavBtnLink>
                                 </NavItemBtn>
 
                                 <NavItemBtn>
-                                    <NavBtnLink to='/register' className={props.activePage=='Register' ? 'navbar-active' : ''}>
+                                    <NavBtnLink to='/register' className={props.activePage === 'Register' ? 'navbar-active' : ''}>
                                         <Button primary>REGISTER</Button>
                                     </NavBtnLink>
                                 </NavItemBtn>

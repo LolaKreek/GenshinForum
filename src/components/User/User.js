@@ -6,7 +6,6 @@ import {
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db, storage } from "../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { useNavigate } from "react-router-dom";
 import { NewImage, FormInput } from "./User.elements";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { Button } from "../../globalStyles";
@@ -22,7 +21,6 @@ const User = () => {
   const [per, setPerc] = useState(null);
   const [imageLink, setImageLink] = useState("");
   const [personalData, setPersonalData] = useState({});
-  const navigate = useNavigate();
   const [ifLoader, setIfLoader] = useState(false);
   const [ifLoadPage, setifLoadPage] = useState(false);
   
@@ -45,7 +43,6 @@ const User = () => {
       window.scrollTo(0, 0);
       setIfLoader(true);
 
-      const name = new Date().getTime() + file.name;
       const storageRef = ref(storage, file.name);
       const uploadTask = uploadBytesResumable(storageRef, file);
 
@@ -229,7 +226,7 @@ const User = () => {
               <input className="single-input__item-input" id="password" type='password' placeholder={personalData.password} onChange={handleInput} />
             </div>
 
-            <Button className="content__submit-input" disabled={per !== null && per < 100} type="submit">Send</Button>
+            <Button className="content__submit-input" disabled={per != null && per < 100} type="submit">Send</Button>
           </form>
         </div>
       </div>

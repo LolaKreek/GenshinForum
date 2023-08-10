@@ -4,7 +4,6 @@ import { Button, Container } from '../../globalStyles';
 import { AuthContext } from '../../context/AuthContext';
 import Loader from "../Loader/Loader";
 import "../../styles/commSec.css";
-
 import {addDoc} from "firebase/firestore";
 import { collection, query, where, getDocs } from "firebase/firestore";
 
