@@ -5,6 +5,10 @@
     HTML - https://html.com
 
 # Getting Started
+Project link:
+https://genshin-impact-lalita-klimchuk.netlify.app/sign-up
+
+Website login information:
 LOGIN: admin@admin.com
 PASSWORD: admin12345
 
