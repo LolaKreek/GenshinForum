@@ -68,25 +68,7 @@ const User = () => {
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             setImageLink(downloadURL);
-            personalData.image = downloadURL;
-            try {
-              setDoc(doc(db, "users", personalData.uid), {
-                address: personalData.address,
-                country: personalData.country,
-                displayName: personalData.displayName,
-                email: personalData.email,
-                image: personalData.image,
-                password: personalData.password,
-                phone: personalData.phone,
-                timestamp: personalData.timestamp,
-                username: personalData.username,
-                uid: personalData.uid,
-              });
-            } catch (err) {
-              console.log(err);
-            }
-
-    setIfLoader(false);
+            setImageName(downloadURL);
             setData((prev) => ({ ...prev, img: downloadURL }));
           });
         }
@@ -101,28 +83,28 @@ const User = () => {
     setData({ ...data, [id]: value });
   };
 
-  // const setImageName = async (imageName) => {
-  //   personalData.image = imageName;
+  const setImageName = async (imageName) => {
+    personalData.image = imageName;
 
-  //   try {
-  //     await setDoc(doc(db, "users", personalData.uid), {
-  //       address: personalData.address,
-  //       country: personalData.country,
-  //       displayName: personalData.displayName,
-  //       email: personalData.email,
-  //       image: personalData.image,
-  //       password: personalData.password,
-  //       phone: personalData.phone,
-  //       timestamp: personalData.timestamp,
-  //       username: personalData.username,
-  //       uid: personalData.uid,
-  //     });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
+    try {
+      await setDoc(doc(db, "users", personalData.uid), {
+        address: personalData.address,
+        country: personalData.country,
+        displayName: personalData.displayName,
+        email: personalData.email,
+        image: personalData.image,
+        password: personalData.password,
+        phone: personalData.phone,
+        timestamp: personalData.timestamp,
+        username: personalData.username,
+        uid: personalData.uid,
+      });
+    } catch (err) {
+      console.log(err);
+    }
 
-  //   setIfLoader(false);
-  // }
+    setIfLoader(false);
+  }
 
   const handleAdd = async (e) => {
     e.preventDefault();

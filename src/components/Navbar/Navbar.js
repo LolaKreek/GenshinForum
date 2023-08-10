@@ -25,7 +25,7 @@ const Navbar = (props) => {
     const navigate = useNavigate();
 
     const [click, setClick] = useState(false);
-    const [setButton] = useState(true);
+    const [button, setButton] = useState(true);
 
     const handleClick = () => setClick(!click);
 
@@ -49,11 +49,7 @@ const Navbar = (props) => {
     }
 
     useEffect(() => {
-        if(window.innerWidth <= 960){
-            setButton(false)
-        } else {
-            setButton(true)
-        }
+        showButton();
     }, []);
 
     window.addEventListener('resize', showButton)
