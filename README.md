@@ -5,6 +5,8 @@
     HTML - https://html.com
 
 # Getting Started
+LOGIN: admin@admin.com
+PASSWORD: admin12345
 
 ## Installation process
 - Install any IDE of your choice
