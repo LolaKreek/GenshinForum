@@ -6,7 +6,7 @@
 
 # Getting Started
 Project link:
-https://genshin-impact-lalita-klimchuk.netlify.app/sign-up
+https://genshin-impact-lalita-klimchuk.netlify.app
 
 Website login information:
 LOGIN: admin@admin.com
